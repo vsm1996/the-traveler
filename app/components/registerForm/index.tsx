@@ -32,7 +32,7 @@ const RegisterForm = () => {
       .then(res => {
         // console.log('res', res.data)
         setErrorMessage(null)
-        router.push('/api/auth/signin')
+        router.push('/dashboard')
       })
       .catch(err => {
         if (err instanceof CanceledError) return
