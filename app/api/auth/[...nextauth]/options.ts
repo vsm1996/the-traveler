@@ -14,14 +14,14 @@ const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        username: { label: 'username', type: 'text', placeholder: 'Username' },
+        email: { label: 'email', type: 'text', placeholder: 'Email' },
         password: { label: 'Password', type: 'password', placeholder: 'Password' }
       },
       async authorize(credentials, req) {
-        if (!credentials?.username || !credentials?.password) return null
+        if (!credentials?.email || !credentials?.password) return null
 
         const user = await prisma.user.findUnique({
-          where: { username: credentials.username }
+          where: { email: credentials.email }
         })
 
         if (!user) return null;

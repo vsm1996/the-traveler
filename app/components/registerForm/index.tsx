@@ -1,9 +1,10 @@
 'use client'
 
-import apiClient from '@/app/services/api-client';
-import { CanceledError } from 'axios';
+import React, { FormEvent, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation';
-import React, { ChangeEvent, FormEvent, useRef, useState } from 'react'
+import { CanceledError } from 'axios';
+
+import apiClient from '@/app/services/api-client';
 
 const RegisterForm = () => {
   const [errorMessage, setErrorMessage] = useState(null)
@@ -19,16 +20,14 @@ const RegisterForm = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    let registerBody = {
-      email: emailRef.current!.value,
-      password: passwordRef.current!.value,
-      firstName: firstNameRef.current!.value,
-      lastName: lastNameRef.current!.value,
-      username: usernameRef.current!.value,
-    }
-
     apiClient
-      .post('/register', registerBody)
+      .post('/register', {
+        email: emailRef.current!.value,
+        password: passwordRef.current!.value,
+        firstName: firstNameRef.current!.value,
+        lastName: lastNameRef.current!.value,
+        username: usernameRef.current!.value,
+      })
       .then(res => {
         // console.log('res', res.data)
         setErrorMessage(null)
@@ -36,7 +35,7 @@ const RegisterForm = () => {
       })
       .catch(err => {
         if (err instanceof CanceledError) return
-        // console.log(err.response.data.error)
+        console.log(err.response.data.error)
         setErrorMessage(err.response.data.error)
       })
   }
