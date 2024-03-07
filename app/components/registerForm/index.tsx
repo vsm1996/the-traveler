@@ -9,8 +9,7 @@ import apiClient from '@/app/services/api-client';
 const RegisterForm = () => {
   const [errorMessage, setErrorMessage] = useState(null)
 
-  const firstNameRef = useRef<HTMLInputElement>(null);
-  const lastNameRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
   const usernameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -24,8 +23,7 @@ const RegisterForm = () => {
       .post('/register', {
         email: emailRef.current!.value,
         password: passwordRef.current!.value,
-        firstName: firstNameRef.current!.value,
-        lastName: lastNameRef.current!.value,
+        name: nameRef.current!.value,
         username: usernameRef.current!.value,
       })
       .then(res => {
@@ -48,12 +46,8 @@ const RegisterForm = () => {
       </div>)}
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor='firstName'>First Name</label>
-          <input ref={firstNameRef} id='firstName' type='text' placeholder='First Name' required />
-        </div>
-        <div>
-          <label htmlFor='lastName'>Last Name</label>
-          <input ref={lastNameRef} id='lastName' type='text' placeholder='Last Name' required />
+          <label htmlFor='name'>Full Name</label>
+          <input ref={nameRef} id='name' type='text' placeholder='Full Name' required />
         </div>
         <div>
           <label htmlFor='username'>Username</label>

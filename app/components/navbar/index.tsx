@@ -7,8 +7,6 @@ import { useSession } from 'next-auth/react'
 const NavBar = () => {
   const { status, data: session } = useSession()
 
-  console.log(session)
-
   return (
     <nav className='p-5'>
       <ul>
