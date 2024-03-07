@@ -1,12 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/prisma/client";
-import { z } from 'zod'
-import bcrypt from 'bcrypt'
+import schema from "./schema";
 
-const schema = z.object({
-  email: z.string().email(),
-  password: z.string().min(5)
-})
+import bcrypt from 'bcrypt'
 
 export async function POST(request: NextRequest) {
   const body = await request.json()
@@ -24,9 +20,12 @@ export async function POST(request: NextRequest) {
   const newUser = await prisma.user.create({
     data: {
       email: body.email,
+      firstName: body.firstName,
+      lastName: body.lastName,
+      username: body.username,
       hashedPassword
     }
   })
 
-  return NextResponse.json({ email: newUser.email })
+  return NextResponse.json({ email: newUser.email }, { status: 201 })
 }

@@ -27,7 +27,9 @@ export async function POST(request: NextRequest) {
   // Else, input new user into db and return newUser object
   const newUser = await prisma.user.create({
     data: {
-      name: body.name,
+      username: body.username,
+      firstName: body.firstName,
+      lastName: body.lastName,
       email: body.email
     }
   })

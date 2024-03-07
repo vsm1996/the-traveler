@@ -1,10 +1,11 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 const schema = z.object({
-  name: z.string().min(3),
+  email: z.string().email(),
+  password: z.string().min(5),
   firstName: z.string().min(2),
   lastName: z.string().min(2),
-  email: z.string().email()
+  username: z.string().min(4),
 })
 
 export default schema

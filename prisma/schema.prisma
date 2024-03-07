@@ -30,17 +30,20 @@ model Account {
 }
 
 model User {
-  id             String         @id @default(cuid())
-  name           String?
-  email          String?        @unique
-  emailVerified  DateTime?
-  hashedPassword String?
-  image          String?
-  accounts       Account[]
-  sessions       Session[]
-  posts          Post[]
-  Comment        Comment[]
-  CommentReply   CommentReply[]
+  id              String         @id @default(cuid())
+  name            String?
+  firstName       String?
+  lastName        String?
+  username        String?        @unique
+  email           String?        @unique
+  emailVerified   DateTime?
+  hashedPassword  String?
+  image           String?
+  accounts        Account[]
+  sessions        Session[]
+  posts           Post[]
+  comments        Comment[]
+  commentsReplies CommentReply[]
 }
 
 model Post {
@@ -80,7 +83,6 @@ model Session {
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-
 
 model VerificationToken {
   identifier String
