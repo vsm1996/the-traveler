@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: process.env.NEXT_API_URL,
+  baseURL: 'http://localhost:3000/api',
   params: {
     key: process.env.NEXT_API_KEY
   }
