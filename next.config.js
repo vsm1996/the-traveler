@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 module.exports = {
   async headers() {
     return [
@@ -15,4 +16,3 @@ module.exports = {
     ]
   }
 };
-
