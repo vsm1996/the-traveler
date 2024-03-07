@@ -30,13 +30,11 @@ const RegisterForm = () => {
     apiClient
       .post('/register', registerBody)
       .then(res => {
-        // console.log('res', res.data)
         setErrorMessage(null)
         router.push('/dashboard')
       })
       .catch(err => {
         if (err instanceof CanceledError) return
-        // console.log(err.response.data.error)
         setErrorMessage(err.response.data.error)
       })
   }
