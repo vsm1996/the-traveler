@@ -1,4 +1,4 @@
-// import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 // import middleware from "next-auth/middleware";
 
 export { default } from "next-auth/middleware";
@@ -12,6 +12,19 @@ export { default } from "next-auth/middleware";
 //   // redirects to /new-page when it hits /users
 //   return NextResponse.redirect(new URL('/new-page', request.url))
 // }
+
+
+export const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+}
+
+export function middleware(request: Request) {
+  if (request.method === 'OPTIONS') {
+    return NextResponse.json({}, { headers: corsHeaders })
+  }
+}
 
 // NextJS Convention - Next knows to look for this, same as layout,error,page,route,etc.
 export const config = {
