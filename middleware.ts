@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 // import middleware from "next-auth/middleware";
 
 export { default } from "next-auth/middleware";
@@ -26,14 +26,16 @@ export const config = {
 }
 
 
-// export const corsHeaders = {
-//   'Access-Control-Allow-Origin': '*',
-//   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-//   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-// }
+export const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+}
 
-// export function middleware(request: Request) {
-//   if (request.method === 'OPTIONS') {
-//     return NextResponse.json({}, { headers: corsHeaders })
-//   }
-// }
+export function middleware(request: NextRequest) {
+  if (request.method === 'OPTIONS') {
+    return NextResponse.json({}, { headers: corsHeaders })
+  }
+
+  return NextResponse.redirect(new URL('/api/auth/signin', request.url))
+}
