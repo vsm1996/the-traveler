@@ -37,5 +37,5 @@ export function middleware(request: NextRequest) {
     return NextResponse.json({}, { headers: corsHeaders })
   }
 
-  return NextResponse.redirect(new URL('/api/auth/signin', request.url))
+  return NextResponse.redirect(new URL('/dashboard', request.url))
 }

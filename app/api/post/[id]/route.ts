@@ -25,3 +25,19 @@ export async function POST(request: NextRequest,
     // Status: 201 -> an object was created
     { status: 201 })
 }
+
+export async function GET(
+  request: NextRequest,
+  { params: { id } }: { params: { id: string } }
+) {
+  // Fetch data from a db
+  const post = await prisma.post.findUnique({
+    where: { id: id }
+  })
+
+  // If not found, return 404 error
+  if (!post) return NextResponse.json({ error: 'Post not found' }, { status: 404 });
+
+  // Else return data
+  return NextResponse.json(post)
+}
