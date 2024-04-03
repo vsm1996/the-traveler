@@ -37,5 +37,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.json({}, { headers: corsHeaders })
   }
 
-  return NextResponse.redirect(new URL('/dashboard', request.url))
+  let authCookie = request.cookies.get('next-auth.session-token')
+
+  if (!authCookie || authCookie.value.length === 0) return NextResponse.redirect(new URL('/api/auth/signin', request.url))
 }
