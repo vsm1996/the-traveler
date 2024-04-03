@@ -42,7 +42,7 @@ const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async session({ session, token, user }) {
-      return session
+      return { ...session, ...user, ...token }
     }
   }
 }

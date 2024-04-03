@@ -2,23 +2,24 @@
 
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import apiClient from '@/app/services/api-client';
-import { AxiosResponse, AxiosError } from 'axios';
+import { AxiosResponse, AxiosError, CanceledError } from 'axios';
 import Post from '../post';
+import CreatePost from './createPost';
 
 const Timeline = () => {
   const [posts, setPosts] = useState<any>([])
-  const [error, setError] = useState<any>()
+  const [error, setErrorMessage] = useState<any>()
 
   useEffect(() => {
-
     const handleFetch = async () => {
       apiClient
         .get('/post')
         .then((res: AxiosResponse) => {
           setPosts(res.data)
         })
-        .catch((err: AxiosError) => {
-          setError(err)
+        .catch((err) => {
+          if (err instanceof CanceledError) return
+          setErrorMessage(err.response.data.error)
         })
     }
 
@@ -27,8 +28,11 @@ const Timeline = () => {
 
   return (
     <div>
+      <CreatePost />
+      {error && <p>{error}</p>}
       <ul className='flex flex-col'>
-        {posts.map((post: any) => <Post key={post.id} post={post} />)}
+        {/* reverse posts */}
+        {posts.reverse().map((post: any) => <Post key={post.id} post={post} />)}
       </ul>
     </div>
   )

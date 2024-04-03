@@ -10,9 +10,6 @@ export async function POST(request: NextRequest,
   const validation = schema.safeParse(body)
   if (!validation.success) return NextResponse.json(validation.error.errors, { status: 400 })
 
-  // search user by unique username, replace id with params.id below
-  const user = await prisma.user.findUnique({ where: { id: id } })
-
   // else, add post to db
   const newpost = await prisma.post.create({
     data: {
