@@ -10,6 +10,7 @@ const Timeline = () => {
   const [posts, setPosts] = useState<any>([])
   const [error, setErrorMessage] = useState<any>()
 
+
   useEffect(() => {
     const handleFetch = async () => {
       apiClient
@@ -24,6 +25,10 @@ const Timeline = () => {
     }
 
     handleFetch()
+
+    return () => {
+      console.log(`The cleanup function for ${posts} was called`)
+    }
   }, [posts])
 
   return (
