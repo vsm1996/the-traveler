@@ -17,7 +17,7 @@ const config: Config = {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["aqua",
+    themes: ["aqua", "synthwave"
       // {
       //   mytheme: {
       //     "primary": "#a991f7",
