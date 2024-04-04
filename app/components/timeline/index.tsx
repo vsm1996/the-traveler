@@ -25,10 +25,6 @@ const Timeline = () => {
     }
 
     handleFetch()
-
-    return () => {
-      console.log(`The cleanup function for ${posts} was called`)
-    }
   }, [posts])
 
   return (
