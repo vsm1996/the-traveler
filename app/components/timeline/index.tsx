@@ -29,7 +29,7 @@ const Timeline = () => {
   }, [])
 
   return (
-    <div>
+    <div className='w-50'>
       <CreatePost />
       {error && <p>{error}</p>}
       <ul className='flex flex-col'>
