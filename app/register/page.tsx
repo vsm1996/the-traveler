@@ -4,7 +4,7 @@ import RegisterForm from '../components/registerForm'
 const RegisterPage = () => {
   return (
     <div className='w-full flex flex-col items-center'>
-      Register Page
+      <h1 className='my-7'> Register Page </h1>
       <RegisterForm />
     </div>
   )
