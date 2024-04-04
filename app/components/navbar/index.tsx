@@ -13,7 +13,8 @@ const NavBar = () => {
         {status === 'authenticated' && (
           <div className='flex space-x-3 items-center'>
             <span className='text-lg font-extrabold'>{session.user!.firstName || session.user!.name}</span>
-            <Link href='/api/auth/signout'>Sign Out</Link>
+            <Link href='/dashboard' className='link link-hover'>Dashboard</Link>
+            <Link href='/api/auth/signout' className='link link-hover'>Sign Out</Link>
           </div>
         )}
         {status === 'unauthenticated' && <Link className='mr-3' href='/api/auth/signin'>
