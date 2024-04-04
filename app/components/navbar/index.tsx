@@ -7,7 +7,6 @@ import ThemeController from '../themeController'
 
 const NavBar = () => {
   const { status, data: session } = useSession()
-  console.log(status)
 
   return (
     <nav className='p-5 navbar bg-base-300'>
