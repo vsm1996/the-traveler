@@ -8,14 +8,16 @@ const NavBar = () => {
   const { status, data: session } = useSession()
 
   return (
-    <nav className='p-5'>
-      <ul>
+    <nav className='p-5 navbar bg-base-300'>
+      <ul className='w-full'>
         {status === 'authenticated' && (
-          <div className='flex space-x-3 items-center'>
-            <span className='text-lg font-extrabold'>{session.user!.firstName || session.user!.name}</span>
-            <Link href='/dashboard' className='link link-hover'>Dashboard</Link>
-            <Link href='/api/auth/signout' className='link link-hover'>Sign Out</Link>
-          </div>
+          <li className='flex justify-between items-center w-full space-x-3'>
+            <span className='text-lg font-extrabold'>Welcome, {session.user!.firstName || session.user!.name}</span>
+            <span>
+              <Link href='/dashboard' className='link link-hover mr-5'>Dashboard</Link>
+              <Link href='/api/auth/signout' className='link link-hover'>Sign Out</Link>
+            </span>
+          </li>
         )}
         {status === 'unauthenticated' && <Link className='mr-3' href='/api/auth/signin'>
           Sign In
