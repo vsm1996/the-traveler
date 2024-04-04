@@ -43,6 +43,13 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     async session({ session, token, user }) {
       return { ...session, ...user, ...token }
+    },
+    async redirect({ url, baseUrl }) {
+      // Allows relative callback URLs
+      if (url.startsWith("/")) return `${baseUrl}/dashboard`
+      // Allows callback URLs on the same origin
+      else if (new URL(url).origin === baseUrl) return url
+      return baseUrl
     }
   }
 }
