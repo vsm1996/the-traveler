@@ -3,6 +3,7 @@ import React from 'react'
 
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
+import ThemeController from '../themeController'
 
 const NavBar = () => {
   const { status, data: session } = useSession()
@@ -13,6 +14,7 @@ const NavBar = () => {
         {status === 'authenticated' && (
           <li className='flex justify-between items-center w-full space-x-3'>
             <span className='text-lg font-extrabold'>Welcome, {session.user!.firstName || session.user!.name}</span>
+            {/* <ThemeController /> */}
             <span>
               <Link href='/dashboard' className='link link-hover mr-5'>Dashboard</Link>
               <Link href='/api/auth/signout' className='link link-hover'>Sign Out</Link>

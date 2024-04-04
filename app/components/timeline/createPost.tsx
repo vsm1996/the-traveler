@@ -8,7 +8,7 @@ import { CanceledError } from 'axios'
 const CreatePost = () => {
   const [error, setErrorMessage] = useState(null)
   const { data: session }: any = useSession()
-  const messageRef = useRef<HTMLInputElement>(null)
+  const messageRef = useRef<HTMLTextAreaElement>(null)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -27,9 +27,13 @@ const CreatePost = () => {
   return (
     <>
       {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input ref={messageRef} type="text" />
-        <button type='submit'> Post </button>
+      <form onSubmit={handleSubmit} className='flex flex-col items-end w-full mb-5'>
+        <textarea
+          ref={messageRef}
+          placeholder="Anything to share?"
+          className='w-full textarea textarea-bordered textarea-md mb-3'
+        />
+        <button type='submit' className='btn btn-outline'> Post </button>
       </form>
     </>
   )
