@@ -34,7 +34,7 @@ const Timeline = () => {
       {error && <p>{error}</p>}
       <ul className='flex flex-col'>
         {/* reverse posts */}
-        {posts.reverse().map((post: any) => <Post key={post.id} post={post} />)}
+        {posts.map((post: any) => <Post key={post.id} post={post} />)}
       </ul>
     </div>
   )
