@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react'
 import React, { FormEvent, useRef, useState } from 'react'
 import { CanceledError } from 'axios'
 
-const CreatePost = () => {
+const CreatePost = ({ handlePost }: any) => {
   const [error, setErrorMessage] = useState(null)
   const { data: session }: any = useSession()
   const messageRef = useRef<HTMLTextAreaElement>(null)
@@ -16,7 +16,11 @@ const CreatePost = () => {
     if (messageRef.current) {
       apiClient
         .post(`/post/${session.sub}`, { message: messageRef.current.value })
-        .then(res => setErrorMessage(null))
+        .then(res => {
+          setErrorMessage(null)
+          messageRef.current!.value = ""
+          handlePost()
+        })
         .catch(err => {
           if (err instanceof CanceledError) return
           setErrorMessage(err.response.data.error)

@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import apiClient from '@/app/services/api-client';
+import { revalidatePath } from "next/cache"
 import { AxiosResponse, AxiosError, CanceledError } from 'axios';
 import Post from '../post';
 import CreatePost from './createPost';
@@ -11,26 +12,27 @@ const Timeline = () => {
   const [error, setErrorMessage] = useState<any>()
 
 
-  useEffect(() => {
-    const handleFetch = async () => {
-      apiClient
-        .get('/post')
-        .then((res: AxiosResponse) => {
-          const newData = res.data.reverse()
-          setPosts(newData)
-        })
-        .catch((err) => {
-          if (err instanceof CanceledError) return
-          setErrorMessage(err.response.data.error)
-        })
-    }
+  const handleFetch = async () => {
+    apiClient
+      .get('/post')
+      .then((res: AxiosResponse) => {
+        const newData = res.data.reverse()
+        setPosts(newData)
+        revalidatePath('/dashboard')
+      })
+      .catch((err) => {
+        if (err instanceof CanceledError) return
+        setErrorMessage(err.response.data.error)
+      })
+  }
 
+  useEffect(() => {
     handleFetch()
   }, [])
 
   return (
     <div className='w-1/2'>
-      <CreatePost />
+      <CreatePost handlePost={handleFetch} />
       {error && <p>{error}</p>}
       <ul className='flex flex-col'>
         {/* reverse posts */}
