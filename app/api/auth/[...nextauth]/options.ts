@@ -44,6 +44,9 @@ const authOptions: NextAuthOptions = {
     async session({ session, token, user }) {
       return { ...session, ...user, ...token }
     },
+    async redirect({ url, baseUrl }) {
+      return Promise.resolve('/dashboard')
+    }
   }
 }
 
