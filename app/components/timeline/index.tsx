@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import apiClient from '@/app/services/api-client';
 import { revalidatePath } from "next/cache"
 import { AxiosResponse, AxiosError, CanceledError } from 'axios';
@@ -26,7 +26,7 @@ const Timeline = () => {
       })
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     handleFetch()
   }, [])
 
