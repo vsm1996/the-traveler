@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Suspense } from "react";
 import AuthProvider from "./auth/Provider";
-import NavBar from "./components/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +20,6 @@ export default function RootLayout({
     <html lang="en" data-theme="aqua">
       <body className={inter.className}>
         <AuthProvider>
-          <NavBar />
           <main className='p-5'>
             <Suspense fallback={<p>Looooader</p>}>
               {children}
