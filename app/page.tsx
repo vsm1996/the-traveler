@@ -9,7 +9,6 @@ export default function Home() {
       <div className="p-24">
         <ContextProviders>
           <HomePageHero />
-          <h1 className="text-4xl">Do your best.</h1>
         </ContextProviders>
       </div>
     </main>
