@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const HomePageHero = () => {
   const { topStories } = useContext(TopStoriesContext)
-  console.log(topStories[1])
+  console.log(topStories)
 
   return (
     <section className='w-full h-[85vh] flex'>

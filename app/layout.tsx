@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="ucla-blue">
+    <html lang="en" data-theme="sage">
       <body className={italiana.className}>
         <main>
           <Suspense fallback={<p>Looooader</p>}>

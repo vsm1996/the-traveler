@@ -20,10 +20,9 @@ export function TopStoriesProvider({ children }: PropsWithChildren<{ children?: 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchTopStories()
-      console.log(data.results.shift())
-      //form data and remove unnessary first element
-      const transformedData = data.results
-      setTopStories(transformedData)
+      //transform data and remove unnessary two elements
+      data.results.splice(0, 2)
+      setTopStories(data.results)
     }
 
     fetchData()
@@ -76,7 +75,6 @@ export function WireProvider({ children }: PropsWithChildren<{ children?: ReactN
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchWire()
-      console.log(data)
       const transformedData = data.results
       setWireStories(transformedData)
     }
