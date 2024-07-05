@@ -8,8 +8,8 @@ const italiana = Italiana({ weight: '400', subsets: ["latin"] });
 const tangerine = Tangerine({ weight: ["400", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "The Traveller",
-  description: "The Traveller - Newspaper",
+  title: "The Traveler",
+  description: "The Traveler - Newspaper",
 };
 
 export default function RootLayout({
