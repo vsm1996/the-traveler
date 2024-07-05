@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ucla-blue: {
+        '50': '#f5f8fa',
+        '100': '#e9eff5',
+        '200': '#cfdde8',
+        '300': '#a4c0d5',
+        '400': '#749fbc',
+        '500': '#5283a5',
+        '600': '#467599',
+        '700': '#345570',
+        '800': '#2e495e',
+        '900': '#2a3e50',
+        '950': '#1c2935',
+    },
+    
+*/
+
+/* sage: {
+        '50': '#f5f6ef',
+        '100': '#e8ecdb',
+        '200': '#d3dabc',
+        '300': '#afbc88',
+        '400': '#9cab70',
+        '500': '#7e8f53',
+        '600': '#62713f',
+        '700': '#4c5833',
+        '800': '#3f472d',
+        '900': '#363e29',
+        '950': '#1c2013',
+    },
+    
+ */
+
+
+ /*  sage-gradient: bg-gradient-to-r from-base-200 via-neutral-content via-45% to-neutral */

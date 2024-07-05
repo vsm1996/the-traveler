@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fraunces, Italiana, Tangerine } from "next/font/google";
 import "./globals.css";
 import { Suspense } from "react";
-import AuthProvider from "./auth/Provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const fraunces = Fraunces({ subsets: ["latin"] });
+const italiana = Italiana({ weight: '400', subsets: ["latin"] });
+const tangerine = Tangerine({ weight: ["400", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SGip",
-  description: "Sokka Gakkai - Internet Practioners",
+  title: "The Traveller",
+  description: "The Traveller - Newspaper",
 };
 
 export default function RootLayout({
@@ -17,15 +18,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="aqua">
-      <body className={inter.className}>
-        <AuthProvider>
-          <main className='p-5'>
-            <Suspense fallback={<p>Looooader</p>}>
-              {children}
-            </Suspense>
-          </main>
-        </AuthProvider>
+    <html lang="en" data-theme="ucla-blue">
+      <body className={italiana.className}>
+        <main>
+          <Suspense fallback={<p>Looooader</p>}>
+            {children}
+          </Suspense>
+        </main>
       </body>
     </html>
   );

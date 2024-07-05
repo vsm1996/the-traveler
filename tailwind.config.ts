@@ -17,16 +17,40 @@ const config: Config = {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["aqua", "synthwave"
-      // {
-      //   mytheme: {
-      //     "primary": "#a991f7",
-      //     "secondary": "#f6d860",
-      //     "accent": "#37cdbe",
-      //     "neutral": "#3d4451",
-      //     "base-100": "#ffffff",
-      //   },
-      // },
+    themes: [
+      {
+        'ucla-blue': {
+          'base-300': '#f5f8fa', // 50
+          'base-200': '#e9eff5', // 100
+          'base-100': '#cfdde8', // 200
+          'neutral-content': '#a4c0d5', // 300
+          'neutral': '#749fbc', // 400
+          'accent-content': '#5283a5', // 500
+          'accent': '#467599', // 600
+          'secondary-content': '#345570', // 700
+          'secondary': '#2e495e', // 800
+          'primary-content': '#2a3e50', // 900
+          'primary': '#1c2935', // 950
+        },
+        'sage': {
+          'base-300': '#f5f6ef', // 50
+          'base-200': '#e8ecdb', // 100
+          'base-100': '#d3dabc', // 200
+          'neutral-content': '#afbc88', // 300
+          'neutral': '#9cab70', //400
+          'accent-content': '#7e8f53', // 500
+          'accent': '#62713f', // 600
+          'secondary-content': '#4c5833', // 700
+          'secondary': '#3f472d', // 800
+          'primary-content': '#363e29', // 900
+          'primary': '#1c2013', // 950
+        },
+        extends: {
+          backgroundImage: {
+            "sage-gradient": "var(--sage-gradient)"
+          }
+        }
+      },
     ],
   },
 };
