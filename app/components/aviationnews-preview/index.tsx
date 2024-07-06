@@ -6,15 +6,15 @@ import { tangerine } from '@/app/font'
 
 const AviationNewsPreview = () => {
   const { aviationNews } = useContext(AviationContext)
-  const aviationNewsPreviewArr: any[] = aviationNews.slice(0, 7) as any[]
+  const aviationNewsPreviewArr: any[] = aviationNews.slice(0, 4) as any[]
 
   return (
-    <div>
+    <div className='mb-8'>
       <div className='my-16 lg:my-20 text-center'>
         <h2 className='text-4xl mb-3 uppercase'>Above The Clouds</h2>
         <p className={`${tangerine.className} text-3xl`}>Latest in aviation news</p>
       </div>
-      <div className='carousel carousel-center'>
+      <div className='w-full h-full flex flex-col lg:flex-row justify-around items-stretch gap-4'>
         {aviationNewsPreviewArr.map((story, index) => (
           <AviationNewsCard
             key={index}

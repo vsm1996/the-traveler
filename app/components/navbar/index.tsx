@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <nav className='w-full border border-t-secondary border-b-secondary border-l-0 border-r-0'>
-      <ul className='p-3 m-auto w-full lg:w-1/2 flex justify-around items-center'>
+      <ul className='p-3 m-auto w-full lg:w-1/2 flex justify-around items-center list-none'>
         <li>
           <Link href='/' className={`hover:text-orange-200 hover:underline ${pathname === '/' ? 'text-orange-200 underline' : null}`}>
             Home

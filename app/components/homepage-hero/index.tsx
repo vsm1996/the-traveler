@@ -6,7 +6,7 @@ import { TopStoriesContext } from '@/app/context/context'
 import { TopStoryProp } from '@/app/types/propTypes'
 import { tangerine } from '@/app/font'
 import Link from 'next/link'
-import { formatPublishedDate } from '@/app/utils/tools'
+import { formatPublishedDate } from '@/app/utlis/tools'
 
 const HomePageHero = () => {
   const { topStories } = useContext(TopStoriesContext)

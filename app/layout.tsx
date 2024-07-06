@@ -4,6 +4,7 @@ import { italiana } from "@/app/font";
 import ContextProviders from "./context/providers";
 
 import "./globals.css";
+import Footer from "./components/footer.tsx";
 
 export const metadata: Metadata = {
   title: "The Traveler",
@@ -26,6 +27,7 @@ export default function RootLayout({
               </div>))}>
               {children}
             </Suspense>
+            <Footer />
           </main>
         </ContextProviders>
       </body>

@@ -1,5 +1,5 @@
 import { MultimediaObjectProp, TopStoryProp } from '@/app/types/propTypes'
-import { formatPublishedDate } from '@/app/utils/tools'
+import { formatPublishedDate } from '@/app/utlis/tools'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -18,10 +18,10 @@ const TopStoriesLink = ({ title, abstract, byline, published_date, multimedia, u
       <div className='w-full lg:w-2/3 mb-5 flex flex-col gap-4 lg:gap-3 items-start px-12'>
         <h2 className='text-3xl ease-in-out duration-300 hover:transition-all hover:underline'>{title}</h2>
         <p className='w-full lg:w-2/3'>{abstract}</p>
-        <span className=''>
+        <div className=''>
           <p>{byline}</p>
           <small>{publishedDate}</small>
-        </span>
+        </div>
       </div>
       <div className='w-full lg:w-1/3 h-full'>
         {imageSrc && (<Image

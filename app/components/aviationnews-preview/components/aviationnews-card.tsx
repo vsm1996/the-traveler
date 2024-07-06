@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { MultimediaObjectProp } from '@/app/types/propTypes'
 import Link from 'next/link'
 import { title } from 'process'
-import { formatPublishedDate } from '@/app/utils/tools'
+import { formatPublishedDate } from '@/app/utlis/tools'
 
 const AviationNewsCard = ({ index, headline, snippet, lead_paragraph, byline, pub_date, multimedia, url }: any) => {
   const [show, setShow] = useState<boolean>(false)
@@ -15,9 +15,10 @@ const AviationNewsCard = ({ index, headline, snippet, lead_paragraph, byline, pu
     <div
       id={`slide${index}`}
       className={`
-      carousel-item flex flex-col mx-1
-      w-1/4 h-full rounded-md bg-secondary text-neutral-content self-stretch 
+      flex flex-col
+      w-full lg:w-1/4 h-full rounded-md bg-secondary text-neutral-content self-stretch 
       ease-in-out duration-300 transition hover:transition-all hover:bg-secondary-content
+      hover:drop-shadow-2xl hover:-translate-y-2 
       `}
     >
       {imageSrc && (<Link target='_blank' href={url} className='relative w-full h-full'>
@@ -40,10 +41,10 @@ const AviationNewsCard = ({ index, headline, snippet, lead_paragraph, byline, pu
             <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
           </svg>
         )}
-        <span className=''>
+        <div className=''>
           <p>{byline.original}</p>
           <small>{publishedDate}</small>
-        </span>
+        </div>
       </div>
     </div>
   )

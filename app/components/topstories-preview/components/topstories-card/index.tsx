@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { MultimediaObjectProp, TopStoryProp } from '@/app/types/propTypes'
 import Link from 'next/link'
-import { formatPublishedDate } from '@/app/utils/tools'
+import { formatPublishedDate } from '@/app/utlis/tools'
 
 const TopStoriesCard = ({ title, abstract, byline, published_date, multimedia, url }: TopStoryProp) => {
   const [show, setShow] = useState<boolean>(false)
@@ -38,10 +38,10 @@ const TopStoriesCard = ({ title, abstract, byline, published_date, multimedia, u
             <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
           </svg>
         )}
-        <span className=''>
+        <div className=''>
           <p>{byline}</p>
           <small>{publishedDate}</small>
-        </span>
+        </div>
       </div>
     </div>
   )
