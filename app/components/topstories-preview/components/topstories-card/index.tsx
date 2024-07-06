@@ -12,7 +12,9 @@ const TopStoriesCard = ({ title, abstract, byline, published_date, multimedia, u
   return (
     <div
       className={`
-        w-full h-full rounded-md bg-secondary text-neutral-content self-stretch drop-shadow-md ease-in-out duration-30 hover:transition-all hover:drop-shadow-2xl hover:-translate-y-2
+        w-full h-full rounded-md bg-secondary text-neutral-content self-stretch 
+        drop-shadow-md ease-in-out duration-30 transition 
+        hover:transition-all hover:drop-shadow-2xl hover:-translate-y-2 hover:bg-secondary-content
         `}
     >
       {imageSrc && <Link target='_blank' href={url} className='relative w-full h-full'>
@@ -28,7 +30,7 @@ const TopStoriesCard = ({ title, abstract, byline, published_date, multimedia, u
         className='cursor-pointer w-full h-full lg:min-h-52 lg:max-h-64 lg:h-64 p-4 flex flex-col justify-between gap-2'
         onClick={() => { setShow(!show) }}
       >
-        <h3>{title}</h3>
+        <h3 className='hover:underline'>{title}</h3>
         {/* turn into a model */}
         {show ? <p>{abstract}</p> : (
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

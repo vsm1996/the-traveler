@@ -10,11 +10,11 @@ const LatestNewsPreview = ({ title, abstract, byline, published_date, multimedia
     <div
       className={`
       w-full h-full flex items-center cursor-pointer
-    border border-b-secondary border-t-0 border-l-0 border-r-0 py-8
+    border border-b-secondary border-t-0 border-l-0 border-r-0 py-4
     ease-in-out duration-300 hover:transition-all hover:bg-secondary
     `}>
       <div className='w-2/3 flex flex-col gap-3 items-start px-12'>
-        <h2 className='text-3xl ease-in-out duration-300 hover:transition-all hover:underline'>{title}</h2>
+        <h2 className='text-3xl transition ease-in-out duration-700 hover:transition-all hover:underline'>{title}</h2>
         <p className='w-2/3'>{abstract}</p>
         <span className=''>
           <p>{byline}</p>

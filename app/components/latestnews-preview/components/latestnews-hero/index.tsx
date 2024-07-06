@@ -4,7 +4,6 @@ import Image from 'next/image'
 import React from 'react'
 
 const LatestNewsHero = ({ title, abstract, byline, published_date, multimedia, url }: WireStoryProp) => {
-  console.log(multimedia)
   const imageSrc = multimedia.filter((item: MultimediaObjectProp) => item.format === "mediumThreeByTwo440").shift()
   const publishedDate = new Date(published_date).toDateString()
 
@@ -25,7 +24,7 @@ const LatestNewsHero = ({ title, abstract, byline, published_date, multimedia, u
         )}
       </div>
       <div className='w-full h-auto lg:flex-grow-1 flex flex-col text-center items-center justify-center p-14 bg-secondary gap-5'>
-        <h2 className='text-3xl'>{title}</h2>
+        <h2 className='text-3xl hover:underline'>{title}</h2>
         <p className='lg:w-2/3'>{abstract}</p>
         <span className=''>
           <p>{byline}</p>

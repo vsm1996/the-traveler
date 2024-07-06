@@ -3,7 +3,8 @@ import { useState, createContext, ReactNode, Dispatch, SetStateAction, PropsWith
 import fetchTopStories from "../services/fetch/nytimes-top-stories";
 import fetchAviationData from "../services/fetch/nytimes-aviation";
 import fetchWire from "../services/fetch/nytimes-wire";
-import { TopStoryProp } from "../types/propTypes";
+import { TopStoryProp, WireStoryProp } from "../types/propTypes";
+import fetchSearch from "../services/fetch/nytimes-search";
 
 interface TopStoriesContextType {
   topStories: TopStoryProp[];
@@ -61,7 +62,7 @@ export function AviationStoriesProvider({ children }: PropsWithChildren<{ childr
 
 
 interface WireContextType {
-  wireStories: object[];
+  wireStories: WireStoryProp[];
   setWireStories: Dispatch<SetStateAction<any[]>>;
 }
 
@@ -71,7 +72,7 @@ export const WireContext = createContext<WireContextType>({
 })
 
 export function WireProvider({ children }: PropsWithChildren<{ children?: ReactNode | undefined }>) {
-  const [wireStories, setWireStories] = useState<Object[]>([])
+  const [wireStories, setWireStories] = useState<WireStoryProp[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,4 +85,29 @@ export function WireProvider({ children }: PropsWithChildren<{ children?: ReactN
   }, [])
 
   return (<WireContext.Provider value={{ wireStories, setWireStories }}>{children}</WireContext.Provider>)
+}
+
+interface Search {
+  searchStories: any[];
+  setSearchStories: Dispatch<SetStateAction<any[]>>;
+  fetchSearchData: Function;
+}
+
+export const SearchContext = createContext<Search>({
+  searchStories: [],
+  setSearchStories: () => { },
+  fetchSearchData: (a: string) => { }
+})
+
+export function SearchProvider({ children }: PropsWithChildren<{ children?: ReactNode | undefined }>) {
+  const [searchStories, setSearchStories] = useState<Object[]>([])
+
+  const fetchSearchData = async (searchTerm: string) => {
+    const data = await fetchSearch(searchTerm)
+    console.log("oi")
+    const transformedData = data.response.docs
+    setSearchStories(transformedData)
+  }
+
+  return (<SearchContext.Provider value={{ searchStories, setSearchStories, fetchSearchData }}>{children}</SearchContext.Provider>)
 }

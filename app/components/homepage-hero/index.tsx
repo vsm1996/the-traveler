@@ -43,9 +43,11 @@ const HomePageHero = () => {
       </section>
     )
   } else {
-    return (<div className='w-full h-[90vh] flex justify-center p-12'>
-      <span className="loading loading-ring loading-lg"></span>
-    </div>)
+    return (
+      <div className='w-full h-[90vh] flex justify-center p-12'>
+        <span className="loading loading-dots loading-lg"></span>
+      </div>
+    )
   }
 }
 
