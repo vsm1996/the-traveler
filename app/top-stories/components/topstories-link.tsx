@@ -10,7 +10,7 @@ const TopStoriesLink = ({ title, abstract, byline, published_date, multimedia, u
       href={url}
       target='_blank'
       className={`
-      w-3/4 h-full flex flex-col lg:flex-row items-center cursor-pointer 
+      w-full lg:w-3/4 h-full flex flex-col lg:flex-row items-center cursor-pointer 
     border border-b-secondary border-t-0 border-l-0 border-r-0 py-8
     ease-in-out duration-300 hover:transition-all hover:bg-secondary
     `}>

@@ -23,7 +23,9 @@ export function TopStoriesProvider({ children }: PropsWithChildren<{ children?: 
     const fetchData = async () => {
       const data = await fetchTopStories()
       //transform data and remove unnessary two elements
-      data.results.splice(0, 2)
+      // data.results.splice(0, 2)
+      const stuff = data.results.splice(0, 1)
+      console.log('top stories', stuff)
       setTopStories(data.results)
     }
 

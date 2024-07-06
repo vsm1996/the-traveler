@@ -22,20 +22,20 @@ const HomePageHero = () => {
     return (
       <section className='w-full h-full lg:h-[90vh] flex flex-col lg:flex-row'>
         <div className='w-full basis-1/2 lg:basis-5/6 px-8 mb-8 lg:mb-0 gap-5 flex flex-col items-center justify-center text-center'>
-          <h1 className={`${tangerine.className} text-8xl`}>{title}</h1>
+          <h1 className={`${tangerine.className} text-6xl`}>{title}</h1>
           <p className='text-wrap text-xl'>{abstract}</p>
           <small className='text-base'>{byline}, {publishedDate}</small>
         </div>
-        <div className='relative w-full h-full lg:flex-grow-1 overflow-hidden'>
+        <div className='relative w-full h-[30vh] lg:h-full overflow-hidden'>
           {imageSrc && (
-            <Link href={url} >
+            <Link href={url} className='absolute w-full h-full'>
               <Image
                 priority
                 src={imageSrc.url}
                 alt={imageSrc.caption}
-                sizes='100vw'
                 fill
-                className='object-cover object-center'
+                sizes='100vw'
+                className='object-cover object-center w-full h-full'
               />
             </Link>
           )}

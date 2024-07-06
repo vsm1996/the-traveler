@@ -10,9 +10,7 @@ const TopStoriesPage = () => {
   return topStories.length > 0 ? (
     <div className='w-full h-full flex flex-col items-center'>
       <h1 className={`
-      w-full
-      text-center pb-12
-        text-5xl mt-20
+      w-full text-center pb-12 px-4 text-5xl mt-20
         border border-b-secondary border-t-0 border-l-0 border-r-0
         `}>Top Travel Stories</h1>
       {topStories && topStories.map((story, index) => (
