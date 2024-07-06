@@ -15,7 +15,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link href='/latest-stories' className='hover:text-orange-200 hover:underline'>
+          <Link href='/latest-news' className='hover:text-orange-200 hover:underline'>
             Latest News
           </Link>
         </li>
