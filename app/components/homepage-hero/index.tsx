@@ -20,7 +20,7 @@ const HomePageHero = () => {
 
 
     return (
-      <section className='w-full h-[90vh] flex flex-col lg:flex-row'>
+      <section className='w-full h-full lg:h-[90vh] flex flex-col lg:flex-row'>
         <div className='w-full basis-1/2 lg:basis-5/6 px-8 mb-8 lg:mb-0 gap-5 flex flex-col items-center justify-center text-center'>
           <h1 className={`${tangerine.className} text-8xl`}>{title}</h1>
           <p className='text-wrap text-xl'>{abstract}</p>
