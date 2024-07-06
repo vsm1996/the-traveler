@@ -3,7 +3,8 @@ const fetchSearch = async (item: string) => {
 
   if (!res.ok) throw new Error('x to fetch news data')
 
-  return res.json()
+  const results = await res.json()
+  return results
 }
 
 export default fetchSearch

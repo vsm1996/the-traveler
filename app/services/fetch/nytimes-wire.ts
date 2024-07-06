@@ -3,7 +3,8 @@ const fetchWire = async () => {
 
   if (!res.ok) throw new Error('Failed to fetch news data')
 
-  return res.json()
+  const results = await res.json()
+  return results
 }
 
 export default fetchWire

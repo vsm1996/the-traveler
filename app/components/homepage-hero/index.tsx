@@ -1,22 +1,49 @@
 'use client'
 import React, { useContext } from 'react'
-import { TopStoriesContext } from '@/app/context/context'
 import Image from 'next/image'
+
+import { TopStoriesContext } from '@/app/context/context'
+import { TopStoryProp } from '@/app/types/propTypes'
+import { tangerine } from '@/app/font'
 
 const HomePageHero = () => {
   const { topStories } = useContext(TopStoriesContext)
-  console.log(topStories)
 
-  return (
-    <section className='w-full h-[85vh] flex'>
-      <div className='w-full flex-grow-1'>
-        Top Story
-      </div>
-      <div className='w-full flex-grow-1'>
-        Image
-      </div>
-    </section>
-  )
+
+  if (topStories[0]) {
+    const foremostStory: TopStoryProp = topStories[0] as TopStoryProp
+    const { title, abstract, byline, published_date, multimedia, url } = foremostStory
+
+    const imageSrc = multimedia.filter(item => item.format === "Super Jumbo").shift()
+    const publishedDate = new Date(published_date).toDateString()
+
+
+    return (
+      <section className='w-full h-[90vh] flex flex-col lg:flex-row'>
+        <div className='w-full basis-1/2 lg:basis-5/6 px-8 gap-5 flex flex-col items-center justify-center text-center'>
+          <h1 className={`${tangerine.className} text-8xl`}>{title}</h1>
+          <p className='text-wrap text-xl'>{abstract}</p>
+          <small className='text-base'>{byline}, {publishedDate}</small>
+        </div>
+        <div className='relative w-full h-full lg:flex-grow-1 overflow-hidden'>
+          {imageSrc && (
+            <Image
+              priority
+              src={imageSrc.url}
+              alt={imageSrc.caption}
+              sizes='100vw'
+              fill
+              className='object-cover object-center'
+            />
+          )}
+        </div>
+      </section>
+    )
+  } else {
+    return (<div className='flex justify-center w-full h-full p-12'>
+      <span className="loading loading-ring loading-lg"></span>
+    </div>)
+  }
 }
 
 export default HomePageHero

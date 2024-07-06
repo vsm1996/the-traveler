@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Fraunces, Italiana, Tangerine } from "next/font/google";
-import "./globals.css";
 import { Suspense } from "react";
+import { italiana } from "@/app/font";
+import ContextProviders from "./context/providers";
 
-const fraunces = Fraunces({ subsets: ["latin"] });
-const italiana = Italiana({ weight: '400', subsets: ["latin"] });
-const tangerine = Tangerine({ weight: ["400", "700"], subsets: ["latin"] });
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "The Traveler",
@@ -18,13 +16,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="sage">
+    <html lang="en" data-theme="ucla-blue">
       <body className={italiana.className}>
-        <main>
-          <Suspense fallback={<p>Looooader</p>}>
-            {children}
-          </Suspense>
-        </main>
+        <ContextProviders>
+          <main className="bg-primary text-base-100">
+            <Suspense fallback={<span className="m-auto loading loading-ring loading-lg"></span>}>
+              {children}
+            </Suspense>
+          </main>
+        </ContextProviders>
       </body>
     </html>
   );

@@ -3,9 +3,10 @@ import { useState, createContext, ReactNode, Dispatch, SetStateAction, PropsWith
 import fetchTopStories from "../services/fetch/nytimes-top-stories";
 import fetchAviationData from "../services/fetch/nytimes-aviation";
 import fetchWire from "../services/fetch/nytimes-wire";
+import { TopStoryProp } from "../types/propTypes";
 
 interface TopStoriesContextType {
-  topStories: object[];
+  topStories: TopStoryProp[];
   setTopStories: Dispatch<SetStateAction<any[]>>;
 }
 
@@ -15,7 +16,7 @@ export const TopStoriesContext = createContext<TopStoriesContextType>({
 })
 
 export function TopStoriesProvider({ children }: PropsWithChildren<{ children?: ReactNode | undefined }>) {
-  const [topStories, setTopStories] = useState<Object[]>([])
+  const [topStories, setTopStories] = useState<TopStoryProp[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
