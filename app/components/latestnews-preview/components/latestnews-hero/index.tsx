@@ -9,7 +9,7 @@ const LatestNewsHero = ({ title, abstract, byline, published_date, multimedia, u
   const publishedDate = new Date(published_date).toDateString()
 
   return (
-    <div className='w-full h-full flex items-center lg:items-stretch flex-col lg:flex-row my-28'>
+    <div className='w-full h-full flex items-center lg:items-stretch flex-col-reverse lg:flex-row my-28'>
       <div className='w-full h-full lg:basis-2/3'>
         {imageSrc && (
           <Link href={url} className='relative w-full h-full'>
@@ -24,9 +24,9 @@ const LatestNewsHero = ({ title, abstract, byline, published_date, multimedia, u
           </Link>
         )}
       </div>
-      <div className='w-full h-auto lg:flex-grow-1 flex flex-col items-start justify-center px-6 py-14 bg-neutral'>
+      <div className='w-full h-auto lg:flex-grow-1 flex flex-col text-center items-center justify-center p-14 bg-secondary gap-5'>
         <h2 className='text-3xl'>{title}</h2>
-        <p className='w-full lg:w-2/3'>{abstract}</p>
+        <p className='lg:w-2/3'>{abstract}</p>
         <span className=''>
           <p>{byline}</p>
           <small>{publishedDate}</small>

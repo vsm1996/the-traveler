@@ -6,6 +6,7 @@ import TopStoriesLink from './components/topstories-link'
 const TopStoriesPage = () => {
   const { topStories } = useContext(TopStoriesContext)
 
+  // TODO: PAGINATION
   return topStories.length > 0 ? (
     <div className='w-full h-full flex flex-col items-center'>
       <h1 className={`

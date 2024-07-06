@@ -14,17 +14,17 @@ const Navbar = () => {
     <nav className='w-full border border-t-secondary border-b-secondary border-l-0 border-r-0'>
       <ul className='p-3 m-auto w-full lg:w-1/2 flex justify-around items-center'>
         <li>
-          <Link href='/'>
+          <Link href='/' className='hover:text-orange-200 hover:underline'>
             Home
           </Link>
         </li>
         <li>
-          <Link href='/top-stories'>
+          <Link href='/top-stories' className='hover:text-orange-200 hover:underline'>
             Top Stories
           </Link>
         </li>
         <li>
-          <Link href='/latest-stories'>
+          <Link href='/latest-stories' className='hover:text-orange-200 hover:underline'>
             Latest News
           </Link>
         </li>

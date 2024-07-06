@@ -20,7 +20,10 @@ export default function RootLayout({
       <body className={italiana.className}>
         <ContextProviders>
           <main className="bg-primary text-base-100">
-            <Suspense fallback={<span className="m-auto loading loading-ring loading-lg"></span>}>
+            <Suspense fallback={((
+              <div className='flex justify-center w-full h-full'>
+                <span className="loading loading-ring loading-lg"></span>
+              </div>))}>
               {children}
             </Suspense>
           </main>
