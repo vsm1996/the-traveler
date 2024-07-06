@@ -3,7 +3,7 @@ import HomePageHero from "./components/homepage-hero";
 import LatestNewsPreview from "./components/latestnews-preview";
 import Navbar from "./components/navbar";
 import TopStoriesPreview from "./components/topstories-preview";
-import ContextProviders from "./context/providers";
+import AviationNewsPreview from "./components/aviationnews-preview";
 
 export default function Home() {
   return (
@@ -15,6 +15,7 @@ export default function Home() {
         <div className="w-full h-full px-8 py-2">
           <TopStoriesPreview />
           <LatestNewsPreview />
+          <AviationNewsPreview />
         </div>
       </div>
     </div>

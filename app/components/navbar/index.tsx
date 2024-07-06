@@ -5,8 +5,6 @@ import { usePathname } from 'next/navigation'
 const Navbar = () => {
   const pathname = usePathname()
 
-  console.log(pathname)
-
   return (
     <nav className='w-full border border-t-secondary border-b-secondary border-l-0 border-r-0'>
       <ul className='p-3 m-auto w-full lg:w-1/2 flex justify-around items-center'>
@@ -23,6 +21,11 @@ const Navbar = () => {
         <li>
           <Link href='/latest-news' className={`hover:text-orange-200 hover:underline ${pathname === '/latest-news' ? 'text-orange-200 underline' : null}`}>
             Latest News
+          </Link>
+        </li>
+        <li>
+          <Link href='/aviation-news' className={`hover:text-orange-200 hover:underline ${pathname === '/aviation-news' ? 'text-orange-200 underline' : null}`}>
+            Aviation News
           </Link>
         </li>
         <li className='flex items-center gap-2'>

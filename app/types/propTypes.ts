@@ -1,10 +1,9 @@
 export interface MultimediaObjectProp {
   caption: string;
   copyright: string;
-  // TO DO: FORMAT
-  format: string;
+  format: 'Super Jumbo' | 'mediumThreeByTwo440' | 'threeByTwoSmallAt2X';
   height: number;
-  subtype: string;
+  subtype: 'largeHorizontal375';
   type: 'image' | 'video';
   url: string;
   width: number;

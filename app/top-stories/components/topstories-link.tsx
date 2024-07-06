@@ -1,10 +1,11 @@
 import { MultimediaObjectProp, TopStoryProp } from '@/app/types/propTypes'
+import { formatPublishedDate } from '@/app/utils/tools'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const TopStoriesLink = ({ title, abstract, byline, published_date, multimedia, url }: TopStoryProp) => {
   const imageSrc = multimedia.filter((item: MultimediaObjectProp) => item.format === "threeByTwoSmallAt2X").shift()
-  const publishedDate = new Date(published_date).toDateString()
+  const publishedDate = formatPublishedDate(published_date)
   return (
     <Link
       href={url}
@@ -27,7 +28,7 @@ const TopStoriesLink = ({ title, abstract, byline, published_date, multimedia, u
           src={imageSrc?.url}
           width={imageSrc.width}
           height={imageSrc.height}
-          alt={imageSrc.caption}
+          alt={imageSrc.caption || ''}
           className='object-cover object-center h-full w-full rounded-sm'
         />)}
       </div>

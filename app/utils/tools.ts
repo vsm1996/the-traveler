@@ -1,0 +1,1 @@
+export function formatPublishedDate(published_date: string): string { return new Date(published_date).toDateString() }

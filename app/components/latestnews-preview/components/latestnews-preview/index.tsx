@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import { MultimediaObjectProp, WireStoryProp } from '@/app/types/propTypes'
 import Link from 'next/link'
+import { formatPublishedDate } from '@/app/utils/tools'
 
 const LatestNewsPreview = ({ title, abstract, byline, published_date, multimedia, url }: WireStoryProp) => {
   const imageSrc = multimedia.filter((item: MultimediaObjectProp) => item.format === "mediumThreeByTwo440").shift()
-  const publishedDate = new Date(published_date).toDateString()
+  const publishedDate = formatPublishedDate(published_date)
 
   return (
     <div
@@ -27,7 +28,7 @@ const LatestNewsPreview = ({ title, abstract, byline, published_date, multimedia
             src={imageSrc?.url}
             width={imageSrc.width}
             height={imageSrc.height}
-            alt={imageSrc.caption}
+            alt={imageSrc.caption || ''}
             className='object-cover object-center h-full w-full rounded-sm'
           />
         </Link>

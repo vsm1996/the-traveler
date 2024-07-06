@@ -23,9 +23,7 @@ export function TopStoriesProvider({ children }: PropsWithChildren<{ children?: 
     const fetchData = async () => {
       const data = await fetchTopStories()
       //transform data and remove unnessary two elements
-      // data.results.splice(0, 2)
-      const stuff = data.results.splice(0, 1)
-      console.log('top stories', stuff)
+      data.results.splice(0, 1)
       setTopStories(data.results)
     }
 
@@ -37,29 +35,29 @@ export function TopStoriesProvider({ children }: PropsWithChildren<{ children?: 
 }
 
 interface AviationContextType {
-  aviationStories: object[];
-  setAviationStories: Dispatch<SetStateAction<any[]>>;
+  aviationNews: any[];
+  setAviationNews: Dispatch<SetStateAction<any[]>>;
 }
 
 export const AviationContext = createContext<AviationContextType>({
-  aviationStories: [],
-  setAviationStories: () => { }
+  aviationNews: [],
+  setAviationNews: () => { }
 })
 
-export function AviationStoriesProvider({ children }: PropsWithChildren<{ children?: ReactNode | undefined }>) {
-  const [aviationStories, setAviationStories] = useState<Object[]>([])
+export function AviationNewsProvider({ children }: PropsWithChildren<{ children?: ReactNode | undefined }>) {
+  const [aviationNews, setAviationNews] = useState<any[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchAviationData()
       const transformedData = data.response.docs
-      setAviationStories(transformedData)
+      setAviationNews(transformedData)
     }
 
     fetchData()
   }, [])
 
-  return (<AviationContext.Provider value={{ aviationStories, setAviationStories }}>{children}</AviationContext.Provider>)
+  return (<AviationContext.Provider value={{ aviationNews, setAviationNews }}>{children}</AviationContext.Provider>)
 }
 
 
@@ -106,7 +104,6 @@ export function SearchProvider({ children }: PropsWithChildren<{ children?: Reac
 
   const fetchSearchData = async (searchTerm: string) => {
     const data = await fetchSearch(searchTerm)
-    console.log("oi")
     const transformedData = data.response.docs
     setSearchStories(transformedData)
   }

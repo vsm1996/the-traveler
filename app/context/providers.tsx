@@ -1,17 +1,17 @@
 'use client'
 import { PropsWithChildren } from "react"
-import { TopStoriesProvider, AviationStoriesProvider, WireProvider, SearchProvider } from "./context"
+import { TopStoriesProvider, AviationNewsProvider, WireProvider, SearchProvider } from "./context"
 
 const ContextProviders = ({ children }: PropsWithChildren<{}>) => {
   return (
     <TopStoriesProvider>
-      <AviationStoriesProvider>
+      <AviationNewsProvider>
         <WireProvider>
           <SearchProvider>
             {children}
           </SearchProvider>
         </WireProvider>
-      </AviationStoriesProvider>
+      </AviationNewsProvider>
     </TopStoriesProvider>
   )
 }

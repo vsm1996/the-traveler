@@ -12,7 +12,7 @@ const TopStoriesPreview = () => {
   return (
     <div className='w-full h-full flex flex-col items-center'>
       <div className='my-16 lg:my-20 text-center'>
-        <h2 className='text-4xl mb-3 uppercase'>Above The Clouds</h2>
+        <h2 className='text-4xl mb-3 uppercase'>Throughout The World</h2>
         <p className={`${tangerine.className} text-3xl`}>Essential stories of the day</p>
       </div>
       <div className='w-full h-full flex flex-col lg:flex-row justify-around items-stretch gap-4'>

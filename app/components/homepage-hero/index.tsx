@@ -6,6 +6,7 @@ import { TopStoriesContext } from '@/app/context/context'
 import { TopStoryProp } from '@/app/types/propTypes'
 import { tangerine } from '@/app/font'
 import Link from 'next/link'
+import { formatPublishedDate } from '@/app/utils/tools'
 
 const HomePageHero = () => {
   const { topStories } = useContext(TopStoriesContext)
@@ -16,23 +17,23 @@ const HomePageHero = () => {
     const { title, abstract, byline, published_date, multimedia, url } = foremostStory
 
     const imageSrc = multimedia.filter(item => item.format === "Super Jumbo").shift()
-    const publishedDate = new Date(published_date).toDateString()
+    const publishedDate = formatPublishedDate(published_date)
 
 
     return (
-      <section className='w-full h-full lg:h-[90vh] flex flex-col lg:flex-row'>
-        <div className='w-full basis-1/2 lg:basis-5/6 px-8 mb-8 lg:mb-0 gap-5 flex flex-col items-center justify-center text-center'>
+      <section className='w-full h-full lg:h-[90vh] flex flex-col items-stretch lg:flex-row'>
+        <div className='w-full h-auto basis-1/2 lg:basis-5/6 px-8 mb-8 lg:mb-0 gap-5 flex flex-col items-center justify-center text-center'>
           <h1 className={`${tangerine.className} text-6xl`}>{title}</h1>
           <p className='text-wrap text-xl'>{abstract}</p>
           <small className='text-base'>{byline}, {publishedDate}</small>
         </div>
-        <div className='relative w-full h-[30vh] lg:h-full overflow-hidden'>
+        <div className='relative w-full h-[40vh] lg:h-auto overflow-hidden'>
           {imageSrc && (
             <Link href={url} className='absolute w-full h-full'>
               <Image
                 priority
                 src={imageSrc.url}
-                alt={imageSrc.caption}
+                alt={imageSrc.caption || ''}
                 fill
                 sizes='100vw'
                 className='object-cover object-center w-full h-full'
