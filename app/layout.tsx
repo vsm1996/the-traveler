@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="ucla-blue">
+    <html lang="en" data-theme="sage">
       <body className={italiana.className}>
         <ContextProviders>
           <main className="bg-primary text-base-100">
