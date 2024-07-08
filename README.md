@@ -4,11 +4,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Libraries and Frameworks -
 NextJS 14 - framework
+
 TailwindCSS - css utility library
+
 DaisyUI - tailwindcss component library
+
 Vitest - testing framework
 
 honorable mention - React Context for ease of data teleportation
+
 ## Getting Started
 
 First, run the development server:
