@@ -1,7 +1,14 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-WELCOME TO MY BOILERPLATE!
+## Welcome to The Traveller
 
+## Libraries and Frameworks -
+NextJS 14 - framework
+TailwindCSS - css utility library
+DaisyUI - tailwindcss component library
+Vitest - testing framework
+
+honorable mention - React Context for ease of data transportation
 ## Getting Started
 
 First, run the development server:
