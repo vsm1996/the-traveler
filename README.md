@@ -8,7 +8,7 @@ TailwindCSS - css utility library
 DaisyUI - tailwindcss component library
 Vitest - testing framework
 
-honorable mention - React Context for ease of data transportation
+honorable mention - React Context for ease of data teleportation
 ## Getting Started
 
 First, run the development server:
