@@ -11,8 +11,7 @@ import { formatPublishedDate } from '@/app/utlis/tools'
 const HomePageHero = () => {
   const { topStories } = useContext(TopStoriesContext)
 
-
-  if (topStories[0]) {
+  if (topStories.length > 0) {
     const foremostStory: TopStoryProp = topStories[0] as TopStoryProp
     const { title, abstract, byline, published_date, multimedia, url } = foremostStory
 
@@ -21,7 +20,7 @@ const HomePageHero = () => {
 
 
     return (
-      <section className='w-full h-full lg:h-[90vh] flex flex-col items-stretch lg:flex-row'>
+      <section data-testid="homepagehero" className='w-full h-full lg:h-[90vh] flex flex-col items-stretch lg:flex-row'>
         <div className='w-full h-auto basis-1/2 lg:basis-5/6 px-8 mb-8 lg:mb-0 gap-5 flex flex-col items-center justify-center text-center'>
           <h1 className={`${tangerine.className} text-6xl`}>{title}</h1>
           <p className='text-wrap text-xl'>{abstract}</p>
@@ -45,7 +44,7 @@ const HomePageHero = () => {
     )
   } else {
     return (
-      <div className='w-full h-[90vh] flex justify-center p-12'>
+      <div data-testid='loading' className='w-full h-[90vh] flex justify-center p-12'>
         <span className="loading loading-dots loading-lg"></span>
       </div>
     )

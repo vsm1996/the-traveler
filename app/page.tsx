@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import HomePageHero from "./components/homepage-hero";
 import LatestNewsPreview from "./components/latestnews-preview";
 import Navbar from "./components/navbar";

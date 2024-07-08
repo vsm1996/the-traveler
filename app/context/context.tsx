@@ -8,12 +8,10 @@ import fetchSearch from "../services/fetch/nytimes-search";
 
 interface TopStoriesContextType {
   topStories: TopStoryProp[];
-  setTopStories: Dispatch<SetStateAction<any[]>>;
 }
 
 export const TopStoriesContext = createContext<TopStoriesContextType>({
   topStories: [],
-  setTopStories: () => { }
 })
 
 export function TopStoriesProvider({ children }: PropsWithChildren<{ children?: ReactNode | undefined }>) {
@@ -22,26 +20,25 @@ export function TopStoriesProvider({ children }: PropsWithChildren<{ children?: 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchTopStories()
-      //transform data and remove unnessary two elements
-      data.results.splice(0, 1)
+
+      //transform data and remove unnessary element
+      data.results.shift()
       setTopStories(data.results)
     }
 
     fetchData()
   }, [])
 
-  return (<TopStoriesContext.Provider value={{ topStories, setTopStories }}> {children} </TopStoriesContext.Provider>)
+  return (<TopStoriesContext.Provider value={{ topStories }}> {children} </TopStoriesContext.Provider>)
 
 }
 
 interface AviationContextType {
   aviationNews: any[];
-  setAviationNews: Dispatch<SetStateAction<any[]>>;
 }
 
 export const AviationContext = createContext<AviationContextType>({
   aviationNews: [],
-  setAviationNews: () => { }
 })
 
 export function AviationNewsProvider({ children }: PropsWithChildren<{ children?: ReactNode | undefined }>) {
@@ -57,18 +54,16 @@ export function AviationNewsProvider({ children }: PropsWithChildren<{ children?
     fetchData()
   }, [])
 
-  return (<AviationContext.Provider value={{ aviationNews, setAviationNews }}>{children}</AviationContext.Provider>)
+  return (<AviationContext.Provider value={{ aviationNews }}>{children}</AviationContext.Provider>)
 }
 
 
 interface WireContextType {
   wireStories: WireStoryProp[];
-  setWireStories: Dispatch<SetStateAction<any[]>>;
 }
 
 export const WireContext = createContext<WireContextType>({
-  wireStories: [],
-  setWireStories: () => { }
+  wireStories: []
 })
 
 export function WireProvider({ children }: PropsWithChildren<{ children?: ReactNode | undefined }>) {
@@ -84,18 +79,16 @@ export function WireProvider({ children }: PropsWithChildren<{ children?: ReactN
     fetchData()
   }, [])
 
-  return (<WireContext.Provider value={{ wireStories, setWireStories }}>{children}</WireContext.Provider>)
+  return (<WireContext.Provider value={{ wireStories }}>{children}</WireContext.Provider>)
 }
 
 interface Search {
   searchStories: any[];
-  setSearchStories: Dispatch<SetStateAction<any[]>>;
   fetchSearchData: Function;
 }
 
 export const SearchContext = createContext<Search>({
   searchStories: [],
-  setSearchStories: () => { },
   fetchSearchData: (a: string) => { }
 })
 
@@ -108,5 +101,5 @@ export function SearchProvider({ children }: PropsWithChildren<{ children?: Reac
     setSearchStories(transformedData)
   }
 
-  return (<SearchContext.Provider value={{ searchStories, setSearchStories, fetchSearchData }}>{children}</SearchContext.Provider>)
+  return (<SearchContext.Provider value={{ searchStories, fetchSearchData }}>{children}</SearchContext.Provider>)
 }
