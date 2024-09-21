@@ -35,7 +35,7 @@ const HomePageHero = () => {
                 alt={imageSrc.caption || ''}
                 fill
                 sizes='100vw'
-                className='object-cover object-center w-full h-full'
+                className='object-cover object-top w-full h-full'
               />
             </Link>
           )}

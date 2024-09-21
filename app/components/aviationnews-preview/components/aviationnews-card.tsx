@@ -21,7 +21,7 @@ const AviationNewsCard = ({ index, headline, snippet, lead_paragraph, byline, pu
       hover:drop-shadow-2xl hover:-translate-y-2 
       `}
     >
-      {imageSrc && (<Link target='_blank' href={url} className='relative w-full h-full'>
+      {imageSrc ? (<Link target='_blank' href={url} className='relative w-full h-full'>
         <Image
           src={`https://static01.nyt.com/${imageSrc?.url}`}
           width={imageSrc.width}
@@ -29,7 +29,10 @@ const AviationNewsCard = ({ index, headline, snippet, lead_paragraph, byline, pu
           alt={imageSrc.caption || ''}
           className='object-contain object-center h-full w-full rounded-md'
         />
-      </Link>)}
+      </Link>) : (
+        <p>no image</p>
+      )}
+
       <div
         className='cursor-pointer w-full h-full lg:min-h-52 lg:max-h-80 lg:h-80 p-4 flex flex-col gap-2'
         onClick={() => { setShow(!show) }}
