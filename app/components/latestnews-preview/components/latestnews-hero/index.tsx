@@ -11,7 +11,7 @@ const LatestNewsHero = ({ title, abstract, byline, published_date, multimedia, u
   return (
     <div className='w-full h-full flex items-center lg:items-stretch flex-col-reverse lg:flex-row my-28'>
       <div className='w-full h-auto'>
-        {imageSrc && (
+        {imageSrc ? (
           <Link href={url} className='relative w-full h-full'>
             <Image
               priority
@@ -22,7 +22,7 @@ const LatestNewsHero = ({ title, abstract, byline, published_date, multimedia, u
               className='object-cover object-left h-full w-full rounded-sm'
             />
           </Link>
-        )}
+        ) : (<div className="skeleton w-full h-full" />)}
       </div>
       <div className='w-full h-auto flex flex-col text-center items-center justify-center p-14 bg-secondary gap-5'>
         <h2 className='text-3xl hover:underline'>{title}</h2>

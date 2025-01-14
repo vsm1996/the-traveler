@@ -7,7 +7,7 @@ import { formatPublishedDate } from '@/app/utlis/tools'
 const TopStoriesCard = ({ title, abstract, byline, published_date, multimedia, url }: TopStoryProp) => {
   const [show, setShow] = useState<boolean>(false)
 
-  const imageSrc = multimedia.filter((item: MultimediaObjectProp) => item.format === "threeByTwoSmallAt2X").shift()
+  const imageSrc: MultimediaObjectProp | undefined = multimedia.filter((item: MultimediaObjectProp): boolean => item.format === "threeByTwoSmallAt2X").shift()
   const publishedDate = formatPublishedDate(published_date)
 
   return (
@@ -18,7 +18,7 @@ const TopStoriesCard = ({ title, abstract, byline, published_date, multimedia, u
         hover:transition-all hover:drop-shadow-2xl hover:-translate-y-2 hover:bg-secondary-content
         `}
     >
-      {imageSrc && <Link target='_blank' href={url} className='relative w-full h-full'>
+      {imageSrc ? <Link target='_blank' href={url} className='relative w-full h-full'>
         <Image
           src={imageSrc?.url}
           width={imageSrc.width}
@@ -26,7 +26,7 @@ const TopStoriesCard = ({ title, abstract, byline, published_date, multimedia, u
           alt={imageSrc.caption || ''}
           className='object-contain object-center h-full w-full rounded-md'
         />
-      </Link>}
+      </Link> : (<div className="skeleton w-full h-full" />)}
       <div
         className='cursor-pointer w-full h-full lg:min-h-52 lg:max-h-72 lg:h-72 p-4 flex flex-col gap-2'
         onClick={() => { setShow(!show) }}

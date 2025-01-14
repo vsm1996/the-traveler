@@ -27,7 +27,7 @@ const HomePageHero = () => {
           <small className='text-base'>{byline}, {publishedDate}</small>
         </div>
         <div className='relative w-full h-[40vh] lg:h-auto overflow-hidden'>
-          {imageSrc && (
+          {imageSrc ? (
             <Link href={url} className='absolute w-full h-full'>
               <Image
                 priority
@@ -38,7 +38,7 @@ const HomePageHero = () => {
                 className='object-cover object-top w-full h-full'
               />
             </Link>
-          )}
+          ) : (<div className="skeleton w-full h-full" />)}
         </div>
       </section>
     )

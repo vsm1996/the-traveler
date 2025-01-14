@@ -25,13 +25,13 @@ const AviationNewsLink = ({ headline, snippet, lead_paragraph, byline, pub_date,
         </div>
       </div>
       <div className='w-full lg:w-1/3 h-full'>
-        {imageSrc && (<Image
+        {imageSrc ? (<Image
           src={`https://static01.nyt.com/${imageSrc?.url}`}
           width={imageSrc.width}
           height={imageSrc.height}
           alt={imageSrc.caption || ''}
           className='object-cover object-center h-full w-full rounded-sm'
-        />)}
+        />) : (<div className="skeleton w-full lg:w-1/3 h-full" />)}
       </div>
     </Link>
   )

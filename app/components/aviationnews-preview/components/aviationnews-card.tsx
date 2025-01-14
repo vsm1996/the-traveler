@@ -30,7 +30,7 @@ const AviationNewsCard = ({ index, headline, snippet, lead_paragraph, byline, pu
           className='object-contain object-center h-full w-full rounded-md'
         />
       </Link>) : (
-        <p>no image</p>
+        <div className="skeleton w-full h-full" />
       )}
 
       <div

@@ -24,13 +24,13 @@ const TopStoriesLink = ({ title, abstract, byline, published_date, multimedia, u
         </div>
       </div>
       <div className='w-full lg:w-1/3 h-full'>
-        {imageSrc && (<Image
+        {imageSrc ? (<Image
           src={imageSrc?.url}
           width={imageSrc.width}
           height={imageSrc.height}
           alt={imageSrc.caption || ''}
           className='object-cover object-center h-full w-full rounded-sm'
-        />)}
+        />) : (<div className="skeleton w-full h-full" />)}
       </div>
     </Link>
   )

@@ -23,7 +23,7 @@ const LatestNewsPreview = ({ title, abstract, byline, published_date, multimedia
         </div>
       </div>
       <div className='w-full lg:w-1/3 h-full'>
-        {imageSrc && (<Link href={url}>
+        {imageSrc ? (<Link href={url}>
           <Image
             src={imageSrc?.url}
             width={imageSrc.width}
@@ -32,7 +32,7 @@ const LatestNewsPreview = ({ title, abstract, byline, published_date, multimedia
             className='object-cover object-center h-full w-full rounded-sm'
           />
         </Link>
-        )}
+        ) : (<div className="skeleton w-full h-full" />)}
       </div>
     </div>
   )
