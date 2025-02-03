@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { italiana } from "@/app/font";
 import ContextProviders from "./context/providers";
+import { Analytics } from "@vercel/analytics/react"
 
 import "./globals.css";
 import Footer from "./components/footer.tsx";
@@ -26,6 +27,7 @@ export default function RootLayout({
                 <span className="loading loading-ring loading-lg"></span>
               </div>))}>
               {children}
+              <Analytics />
             </Suspense>
             <Footer />
           </main>
