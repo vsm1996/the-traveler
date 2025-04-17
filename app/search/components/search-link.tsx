@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const SearchStoriesLink = ({ headline, snippet, lead_paragraph, byline, pub_date, multimedia, url }: any) => {
-  const imageSrc = multimedia.filter((item: MultimediaObjectProp) => item.subtype === "largeHorizontal375").shift()
+  const imageSrc = Array.isArray(multimedia) ? multimedia.filter((item: MultimediaObjectProp) => item.subtype === "largeHorizontal375").shift() : undefined;
   const publishedDate = formatPublishedDate(pub_date)
 
   return (

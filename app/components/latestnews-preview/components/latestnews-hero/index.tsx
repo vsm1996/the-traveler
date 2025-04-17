@@ -5,7 +5,7 @@ import React from 'react'
 import { formatPublishedDate } from '@/app/utlis/tools'
 
 const LatestNewsHero = ({ title, abstract, byline, published_date, multimedia, url }: WireStoryProp) => {
-  const imageSrc = multimedia.filter((item: MultimediaObjectProp) => item.format === "mediumThreeByTwo440").shift()
+  const imageSrc = Array.isArray(multimedia) ? multimedia.filter((item: MultimediaObjectProp) => item.format === "mediumThreeByTwo440").shift() : undefined;
   const publishedDate = formatPublishedDate(published_date)
 
   return (

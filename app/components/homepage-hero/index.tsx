@@ -15,7 +15,7 @@ const HomePageHero = () => {
     const foremostStory: TopStoryProp = topStories[0] as TopStoryProp
     const { title, abstract, byline, published_date, multimedia, url } = foremostStory
 
-    const imageSrc = multimedia.filter(item => item.format === "Super Jumbo").shift()
+    const imageSrc = Array.isArray(multimedia) ? multimedia.filter(item => item.format === "Super Jumbo").shift() : undefined;
     const publishedDate = formatPublishedDate(published_date)
 
 

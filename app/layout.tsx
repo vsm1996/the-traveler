@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en" data-theme="sage">
       <body className={italiana.className}>
         <ContextProviders>
-          <main className="bg-primary text-base-100">
+          <main className={`bg-primary text-base-100`}>
             <Suspense fallback={((
               <div className='flex justify-center w-full h-full'>
                 <span className="loading loading-ring loading-lg"></span>

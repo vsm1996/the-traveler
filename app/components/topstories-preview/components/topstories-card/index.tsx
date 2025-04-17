@@ -7,7 +7,7 @@ import { formatPublishedDate } from '@/app/utlis/tools'
 const TopStoriesCard = ({ title, abstract, byline, published_date, multimedia, url }: TopStoryProp) => {
   const [show, setShow] = useState<boolean>(false)
 
-  const imageSrc: MultimediaObjectProp | undefined = multimedia.filter((item: MultimediaObjectProp): boolean => item.format === "threeByTwoSmallAt2X").shift()
+  const imageSrc: MultimediaObjectProp | undefined = Array.isArray(multimedia) ? multimedia.filter((item: MultimediaObjectProp): boolean => item.format === "threeByTwoSmallAt2X").shift() : undefined;
   const publishedDate = formatPublishedDate(published_date)
 
   return (

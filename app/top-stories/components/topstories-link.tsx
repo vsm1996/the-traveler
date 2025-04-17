@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const TopStoriesLink = ({ title, abstract, byline, published_date, multimedia, url }: TopStoryProp) => {
-  const imageSrc = multimedia.filter((item: MultimediaObjectProp) => item.format === "threeByTwoSmallAt2X").shift()
+  const imageSrc = Array.isArray(multimedia) ? multimedia.filter((item: MultimediaObjectProp) => item.format === "threeByTwoSmallAt2X").shift() : undefined;
   const publishedDate = formatPublishedDate(published_date)
   return (
     <Link
