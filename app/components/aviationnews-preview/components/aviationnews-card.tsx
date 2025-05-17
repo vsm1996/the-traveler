@@ -7,7 +7,7 @@ import { formatPublishedDate } from '@/app/utlis/tools'
 
 const AviationNewsCard = ({ index, headline, snippet, lead_paragraph, byline, pub_date, multimedia, url }: any) => {
   const [show, setShow] = useState<boolean>(false)
-  const imageSrc = Array.isArray(multimedia) ? multimedia.filter((item: MultimediaObjectProp) => item.subtype === "largeHorizontal375").shift() : undefined;
+  const imageSrc = multimedia.default;
   const publishedDate = formatPublishedDate(pub_date)
 
   return (
@@ -20,16 +20,16 @@ const AviationNewsCard = ({ index, headline, snippet, lead_paragraph, byline, pu
       hover:drop-shadow-2xl hover:-translate-y-2 
       `}
     >
-      {imageSrc ? (<Link target='_blank' href={url} className='relative w-full h-full'>
+      {imageSrc.url ? (<Link target='_blank' href={url} className='relative w-full h-full'>
         <Image
-          src={`https://static01.nyt.com/${imageSrc?.url}`}
+          src={imageSrc?.url}
           width={imageSrc.width}
           height={imageSrc.height}
           alt={imageSrc.caption || ''}
           className='object-contain object-center h-full w-full rounded-md'
         />
       </Link>) : (
-        <div className="skeleton w-full h-full" />
+        <div className="skeleton w-auto h-64 rounded-md" />
       )}
 
       <div

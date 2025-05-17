@@ -6,6 +6,8 @@ import AviationNewsLink from './components/aviationnews-link'
 const AviationPage = () => {
   const { aviationNews } = useContext(AviationContext)
 
+  console.log(aviationNews)
+
   return aviationNews.length > 0 ? (
     <div className='w-full h-full flex flex-col items-center'>
       <h1 className={`

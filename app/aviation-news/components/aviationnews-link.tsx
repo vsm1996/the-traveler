@@ -4,9 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const AviationNewsLink = ({ headline, snippet, lead_paragraph, byline, pub_date, multimedia, url }: any) => {
-  const imageSrc = Array.isArray(multimedia) ? multimedia.filter((item: MultimediaObjectProp) => item.subtype === "largeHorizontal375").shift() : undefined;
+  console.log(multimedia)
+  // todo: fix item type below
+  const imageSrc = multimedia.default
   const publishedDate = formatPublishedDate(pub_date)
-
+  console.log(imageSrc)
   return (
     <Link
       href={url}
@@ -25,8 +27,8 @@ const AviationNewsLink = ({ headline, snippet, lead_paragraph, byline, pub_date,
         </div>
       </div>
       <div className='w-full lg:w-1/3 h-full'>
-        {imageSrc ? (<Image
-          src={`https://static01.nyt.com/${imageSrc?.url}`}
+        {multimedia ? (<Image
+          src={imageSrc?.url}
           width={imageSrc.width}
           height={imageSrc.height}
           alt={imageSrc.caption || ''}
